@@ -52,4 +52,5 @@ Abra http://localhost:5510
 
 ## Pendências
 
-- [ ] Link do checkout do ingresso online: trocar `CHECKOUT_ONLINE` no topo de `build_online.py`
+- [x] Link do checkout do ingresso online (`CHECKOUT_ONLINE` no topo de `build_online.py`)
+- [ ] Confirmar a lista do que o ingresso inclui

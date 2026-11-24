@@ -7,7 +7,7 @@ ROOT = pathlib.Path(__file__).parent
 s = (ROOT / "original" / "index.html").read_text(encoding="utf-8")
 
 # >>> COLE AQUI o link de checkout do ingresso online (R$ 497) <<<
-CHECKOUT_ONLINE = "https://pay.nitro10x.com.br/pay/COLE-AQUI-O-LINK-DO-INGRESSO-ONLINE"
+CHECKOUT_ONLINE = "https://pay.nitro10x.com.br/pay/nitro-10x-120-online-site"
 
 def rep(old, new, count=None):
     """Troca exata; falha se o trecho não existir (evita troca silenciosa errada)."""
@@ -98,7 +98,7 @@ rx(r'(<dt[^>]*>)Local(</dt> <dd[^>]*>)Alphaville · Barueri/SP(</dd>)', r'\1Form
 rx(r'Ingresso Gold (<span[^>]*>)Para viver os 3 dias(</span>)',
    r'<span class="live-badge"><i></i>Ao vivo</span> Ingresso Online \1Os 3 dias transmitidos ao vivo, direto do palco do Nitro 10X\2')
 rx(r'<div class="price"([^>]*)>.*?</div>',
-   r'<div class="price"\1><p class="price__from">Acesso individual · transmissão ao vivo</p>'
+   r'<div class="price"\1><p class="price__from">De <s>R$ 997</s><span class="price__off">50% OFF</span></p>'
    r'<p class="price__now"><span class="sr-only">por </span>12x de R$ 49,70</p>'
    r'<p class="price__cash">ou R$ 497 à vista</p></div>')
 rx(r'(<ul class="detail__perks"[^>]*>).*?(</ul>)', lambda m: m.group(1) + "".join(
@@ -201,7 +201,8 @@ rx(r'<a href="https://www\.google\.com/maps/search/\?api=1&amp;query=Av\.\+Copac
 rep(">Data e local</h4>", ">Data e formato</h4>")
 
 # ---------- checkout ----------
-rx(r"const CHECKOUT = \{.*?\};", f"const CHECKOUT = {{\n    Online: '{CHECKOUT_ONLINE}'\n  }};")
+# o botão manda ingresso "Online ao vivo"; Gold é o fallback do código original
+rx(r"const CHECKOUT = \{.*?\};", f"const CHECKOUT = {{\n    'Online ao vivo': '{CHECKOUT_ONLINE}',\n    Gold: '{CHECKOUT_ONLINE}'\n  }};")
 
 # ---------- conferência ----------
 for w in ["Alphaville", "Barueri", "Diamond", "Platinum", "presencial em", "seatmap\" id", "na sala"]:

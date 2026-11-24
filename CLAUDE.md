@@ -1,7 +1,8 @@
 # Nitro 10X 12.0 Online — LP
 
 Landing page da versão **online e ao vivo** do Nitro 10X 12.0 (03 a 05/12), ingresso único de **R$ 497**
-(12x de R$ 49,70). Quem pede as mudanças é o time de marketing, em português e sem termos técnicos:
+(12x de R$ 49,70), ancorado em "De R$ 997, 50% OFF".
+Checkout: `CHECKOUT_ONLINE` no topo do script; no JS a chave é `'Online ao vivo'` (o valor de `data-lead-tier`). Quem pede as mudanças é o time de marketing, em português e sem termos técnicos:
 responda em português, explique o que mudou em linguagem simples e mostre o resultado.
 
 ## Como o projeto funciona (leia antes de editar)
@@ -46,7 +47,6 @@ Um `[ERRO] ...` significa que um trecho de busca não bate mais com o original: 
 
 ## Pendências
 
-- `CHECKOUT_ONLINE` (topo do script) ainda é um link provisório: falta o link real do ingresso de R$ 497.
 - O que o ingresso inclui (lista `detail__perks`) foi escrito com base no ingresso Gold: confirmar com o time.
 
 ## Conferir antes de entregar
