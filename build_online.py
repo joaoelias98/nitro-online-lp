@@ -218,6 +218,9 @@ s = s.replace('<span class="live-badge"><i></i>Ao vivo</span> online', '<span cl
 s = s.replace('<span class="live-badge"><i></i>Ao vivo</span>', '<span><span class="live-dot"></span>Ao vivo</span>')  # barra do topo
 assert 'class="live-badge"' not in s
 
+# marca invisível: avisa quem abrir o HTML que ele é gerado (não editar à mão)
+s = s.replace("<!DOCTYPE html>", "<!DOCTYPE html><!-- Gerado por build_online.py: edite o script, não este arquivo -->", 1)
+
 out = ROOT / "online" / "index.html"
 out.write_text(s, encoding="utf-8", newline="\n")  # mesmo resultado no Windows e no GitHub
 print("ok ->", out)

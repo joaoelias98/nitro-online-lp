@@ -13,6 +13,7 @@ on:
 
 permissions:
   contents: write
+  pages: write
 
 concurrency:
   group: gerar-pagina
@@ -32,6 +33,7 @@ jobs:
         run: python -X utf8 build_online.py
 
       - name: Salvar página gerada
+        id: salvar
         run: |
           if git diff --quiet -- online/index.html; then
             echo "Página já estava atualizada."
@@ -42,3 +44,11 @@ jobs:
           git add online/index.html
           git commit -m "Página gerada automaticamente (${GITHUB_SHA::7})"
           git push
+          echo "mudou=1" >> "$GITHUB_OUTPUT"
+
+      # Commit feito pela automação não republica o site sozinho: pede a republicação no GitHub Pages
+      - name: Republicar o site (GitHub Pages)
+        if: steps.salvar.outputs.mudou == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${GITHUB_REPOSITORY}/pages/builds" --jq .status
