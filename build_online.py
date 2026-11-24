@@ -29,7 +29,12 @@ s = s.replace("/nitro10x_dez26/lp/", "assets/")
 
 # ---------- SEO ----------
 rep("<title>Nitro 10X 12.0 — 03 a 05 de dezembro em Alphaville</title>",
-    "<title>Nitro 10X 12.0 Online — 03 a 05 de dezembro, ao vivo</title>")
+    "<title>Nitro 10X 12.0 Online — 03 a 05 de dezembro, ao vivo</title>"
+    # favicon: só o X da marca, em verde (arquivos gerados a partir do X do CSS original)
+    '<link rel="icon" href="favicon.ico" sizes="any">'
+    '<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">'
+    '<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">'
+    '<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">')
 rep('content="Nitro 10X 12.0 — 03 a 05 de dezembro em Alphaville"',
     'content="Nitro 10X 12.0 Online — 03 a 05 de dezembro, ao vivo"')
 rep("Imersão presencial para donos e sócios de empresa, de 03 a 05/12 em Alphaville, Barueri/SP.",
