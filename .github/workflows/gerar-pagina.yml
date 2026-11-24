@@ -1,0 +1,44 @@
+# Gera online/index.html sozinho sempre que alguém salvar mudanças no script ou na LP original.
+# Assim dá para editar o build_online.py direto pelo site do GitHub, sem instalar nada.
+name: Gerar página
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - build_online.py
+      - original/**
+      - online/assets/**
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gerar-pagina
+  cancel-in-progress: false
+
+jobs:
+  gerar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Gerar online/index.html
+        run: python -X utf8 build_online.py
+
+      - name: Salvar página gerada
+        run: |
+          if git diff --quiet -- online/index.html; then
+            echo "Página já estava atualizada."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add online/index.html
+          git commit -m "Página gerada automaticamente (${GITHUB_SHA::7})"
+          git push

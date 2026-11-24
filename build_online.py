@@ -219,6 +219,6 @@ s = s.replace('<span class="live-badge"><i></i>Ao vivo</span>', '<span><span cla
 assert 'class="live-badge"' not in s
 
 out = ROOT / "online" / "index.html"
-out.write_text(s, encoding="utf-8")
+out.write_text(s, encoding="utf-8", newline="\n")  # mesmo resultado no Windows e no GitHub
 print("ok ->", out)
 
