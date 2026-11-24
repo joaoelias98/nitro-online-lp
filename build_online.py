@@ -227,6 +227,9 @@ s = s.replace('<span class="live-badge"><i></i>Ao vivo</span> Ingresso Online', 
 s = s.replace('<span class="live-badge"><i></i>Ao vivo</span> online', '<span class="live-dot"></span>ao vivo · online')  # CTA final
 s = s.replace('<span class="live-badge"><i></i>Ao vivo</span>', '<span><span class="live-dot"></span>Ao vivo</span>')  # barra do topo
 assert 'class="live-badge"' not in s
+# barra do topo: sem o separador fixo antes do "Ao vivo" (ficavam 2 bolinhas); só a que pisca
+rep('<span>03 — 05 de dezembro</span><i></i><span><span class="live-dot"></span>Ao vivo</span>',
+    '<span>03 — 05 de dezembro</span><span><span class="live-dot"></span>Ao vivo</span>')
 
 # marca invisível: avisa quem abrir o HTML que ele é gerado (não editar à mão)
 s = s.replace("<!DOCTYPE html>", "<!DOCTYPE html><!-- Gerado por build_online.py: edite o script, não este arquivo -->", 1)
