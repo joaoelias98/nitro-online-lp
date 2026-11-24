@@ -2,6 +2,9 @@
 
 Versão **online e ao vivo** da LP do Nitro 10X 12.0 (03 a 05 de dezembro), ingresso **R$ 497** (12x de R$ 49,70).
 
+**No ar:** https://lp.nitro10x.com.br/nitro-online/ (prévia: https://joaoelias98.github.io/nitro-online-lp/)
+Toda mudança salva aqui aparece nos dois endereços em 1–2 minutos.
+
 ## ✏️ Como editar pelo site do GitHub (sem instalar nada)
 
 1. Abra o arquivo **`build_online.py`** aqui no repositório.

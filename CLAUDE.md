@@ -7,6 +7,15 @@ Checkout: `CHECKOUT_ONLINE` no topo do script; no JS a chave é `'Online ao vivo
 Quem pede as mudanças é o time de marketing, em português e sem termos técnicos:
 responda em português, explique o que mudou em linguagem simples e mostre o resultado.
 
+## Onde a LP está no ar
+
+- **Oficial:** https://lp.nitro10x.com.br/nitro-online/ — Worker `nitro-online-lp` (conta DTS Group no Cloudflare),
+  rota `lp.nitro10x.com.br/nitro-online*`. Ele só repassa a página do GitHub Pages (código em `cloudflare/worker.js`).
+  O resto do `lp.nitro10x.com.br` é o projeto Pages `dts6-nitro10x`: **não mexer nele**.
+- **Prévia:** https://joaoelias98.github.io/nitro-online-lp/
+- Toda mudança enviada ao GitHub aparece nos dois endereços em 1–2 min (HTML com cache de 60 s).
+- No domínio oficial o pixel da Meta dispara e o formulário gera lead real.
+
 ## Como o projeto funciona (leia antes de editar)
 
 - `original/index.html` é a cópia da LP **presencial** (Astro, minificada). **Nunca edite.**
