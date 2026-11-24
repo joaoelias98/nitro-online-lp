@@ -40,8 +40,11 @@ Um `[ERRO] ...` significa que um trecho de busca não bate mais com o original: 
 - Logo com a tarja **ONLINE**: ao lado da logo no PC, embaixo e centralizada no celular.
 - "Ao vivo" sinalizado só com a **bolinha verde piscando** (`.live-dot`). **Sem selo vermelho.**
 - Na barra verde do topo a bolinha é escura (senão some no fundo verde).
-- Celular: o KV do topo é mais baixo e sobe (`object-position:50% 72%`), com o degradê escuro do topo
-  reduzido para não sombrear os rostos. As linhas decorativas `.hb-lines` ficam escondidas no hero.
+- **Botão "Quero assistir ao vivo" sempre na primeira dobra** (testado em 360x640, 375x667, 390x664,
+  412x780, 1280x620, 1366x657, 1440x760 e 1920x940). Ao mexer no topo, meça de novo.
+- Celular: KV do topo mais baixo (`height:min(66vw,270px)`, `object-position:50% 30%`) com a logo subindo
+  por cima da foto; degradê escuro do topo reduzido para não sombrear os rostos. As linhas decorativas
+  `.hb-lines` ficam escondidas no hero. Para vencer o CSS original aqui use `body .hero .x:not(#_)`.
 - Foto do Pyero na seção do mentor: `online/assets/pyero-palco-{420,640,880,1200}.webp`.
   Foto nova: converter para webp nesses 4 tamanhos (Pillow, qualidade ~78) e usar `srcset`.
 - O lead vai para o mesmo webhook do n8n com `ingresso: "Online ao vivo"`.

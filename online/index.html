@@ -267,19 +267,28 @@ window.n10xDadosPixel = function(d){
   box-shadow:0 0 4cqi rgb(46 240 127 / .45)}
 .logo-lockup--hero{filter:drop-shadow(0 18px 40px rgb(0 0 0 / .6))}
 /* celular: ONLINE embaixo da logo, centralizado */
-@media(max-width:999px){.logo-lockup--hero{width:min(210px,56%);margin:0 auto 1.4rem;align-items:center}
-  .logo-lockup--hero .logo-online{margin-right:0}
-  /* KV mais alto: corta o céu vazio acima das cabeças */
-  .hero__media:not(#_){height:min(80vw,330px)}
-  .hero__img:not(#_){object-position:50% 72%}
-  /* o degradê escuro do topo pegava os rostos depois de subir o KV: fica só uma faixa fina */
-  .hero__media:not(#_):after{background:linear-gradient(180deg,rgb(7 9 10 / .4) 0%,transparent 7%)}}
-/* PC: ONLINE do lado da logo */
-@media(min-width:1000px){.logo-lockup--hero{container-type:normal;flex-direction:row;align-items:center;gap:1.1rem;
-    margin-block:clamp(1rem,2.4vw,1.4rem)}
-  .logo-lockup--hero img{width:240px!important}
-  .logo-lockup--hero .logo-online{margin:0;padding:.45rem .5rem .45rem .85rem;border-radius:4px;font-size:1.15rem;
-    margin-right:0;box-shadow:0 0 22px rgb(46 240 127 / .45)}}
+/* Botão "Quero assistir ao vivo" na PRIMEIRA DOBRA: celular 375x667 e notebook 1366x657 (visível com a barra do navegador).
+   "body .hero ... :not(#_)" é necessário para vencer as regras "body ...:not(#_)" do CSS original. */
+@media(max-width:999px){.logo-lockup--hero:not(#_){width:min(170px,46%);margin:0 auto .8rem;align-items:center}
+  .logo-lockup--hero .logo-online{margin-right:0;font-size:8.5cqi}
+  /* KV mais baixo: a logo sobe por cima da parte de baixo da foto */
+  body .hero .hero__media:not(#_){height:min(66vw,270px);margin-bottom:-5.75rem}
+  body .hero .hero__img:not(#_){object-position:50% 30%}
+  /* o degradê escuro do topo pegava os rostos: fica só uma faixa fina */
+  .hero__media:not(#_):after{background:linear-gradient(180deg,rgb(7 9 10 / .4) 0%,transparent 7%)}
+  body .hero .hero__title:not(#_){font-size:clamp(1.55rem,1rem + 3vw,2.1rem)}
+  body .hero .hero__lead:not(#_){margin-top:.65rem;font-size:.92rem;line-height:1.5;max-width:40ch}
+  body .hero .hero__cta:not(#_){margin-top:1rem}}
+/* PC: ONLINE do lado da logo, tudo mais para cima */
+@media(min-width:1000px){.logo-lockup--hero:not(#_){container-type:normal;flex-direction:row;align-items:center;gap:1rem;
+    margin-block:0 1rem}
+  .logo-lockup--hero:not(#_) img{width:210px!important}
+  .logo-lockup--hero .logo-online:not(#_){margin:0;padding:.4rem .45rem .4rem .75rem;border-radius:4px;font-size:1rem;
+    box-shadow:0 0 22px rgb(46 240 127 / .45)}
+  body .hero .hero__inner:not(#_){padding-block:1.4rem 2.5rem}
+  body .hero .hero__title:not(#_){max-width:21ch;font-size:clamp(2.3rem,1rem + 2.3vw,3.2rem)}
+  body .hero .hero__lead:not(#_){margin-top:1rem}
+  body .hero .hero__cta:not(#_){margin-top:1.4rem}}
 .logo-lockup--ft{width:140px}
 .logo-lockup--ft .logo-online{box-shadow:none}
 </style>
