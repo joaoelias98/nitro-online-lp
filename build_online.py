@@ -41,7 +41,7 @@ rep('<span>Alphaville · Barueri/SP</span><i class="hide-sm"></i><span class="hi
 # selo AO VIVO acima do título do hero
 rx(r'(<div class="hero__copy"[^>]*>)', r'\1<span class="live-badge"><i></i>Ao vivo · 03 a 05 de dezembro · online</span>')
 rx(r'(<dt[^>]*>)Local(</dt> <dd[^>]*>)Alphaville · Barueri/SP(</dd> </div> <div[^>]*> <dt[^>]*>Impacto)',
-   r'\1Formato\2<span class="live-dot"></span>Online · ao vivo\3')
+   r'\1Formato\2<span class="live-dot"></span>Online<span class="fmt-sep"> · </span><span class="fmt-live">ao vivo</span>\3')
 rx(r'Agora é a\s+sua vez de trocar o medo do cenário', 'Agora você assiste <strong>ao vivo</strong>, de onde estiver, e troca o medo do cenário')
 rx(r'(<a href="#bilhetes" class="btn btn--primary"[^>]*>)Garantir meu ingresso(</a>)', r'\1Quero assistir ao vivo\2')
 
@@ -170,7 +170,11 @@ rep("</head>", """<style id="logo-online">
   .hero__media:not(#_):after{background:linear-gradient(180deg,rgb(7 9 10 / .4) 0%,transparent 7%)}
   body .hero .hero__title:not(#_){font-size:clamp(1.55rem,1rem + 3vw,2.1rem)}
   body .hero .hero__lead:not(#_){margin-top:.65rem;font-size:.92rem;line-height:1.5;max-width:40ch}
-  body .hero .hero__cta:not(#_){margin-top:1rem}}
+  body .hero .hero__cta:not(#_){margin-top:1rem}
+  /* campo "Formato" embaixo do botão: "● Online" / "ao vivo" (sem quebrar o "ao vivo" no meio) */
+  .hero__fields .fmt-sep{display:none}
+  .hero__fields .fmt-live{display:block}}
+.fmt-live{white-space:nowrap}
 /* PC: ONLINE do lado da logo, tudo mais para cima */
 @media(min-width:1000px){.logo-lockup--hero:not(#_){container-type:normal;flex-direction:row;align-items:center;gap:1rem;
     margin-block:0 1rem}
